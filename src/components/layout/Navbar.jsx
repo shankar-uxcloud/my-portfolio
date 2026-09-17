@@ -1,4 +1,4 @@
-﻿import { Menu, MoveUpRight, X } from "lucide-react";
+import { FileText, Menu, MoveUpRight, X } from "lucide-react";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
@@ -14,6 +14,7 @@ function Navbar() {
     { label: "Certifications", to: "/certifications" },
     { label: "GitHub", to: "/github" },
     { label: "Achievements", to: "/achievements" },
+    { label: "Resume", to: "/resume" },
   ];
 
   const closeMenu = () => setOpen(false);
@@ -24,7 +25,6 @@ function Navbar() {
         <nav className="relative rounded-2xl border border-white/[0.08] bg-black/65 px-3 shadow-[0_20px_80px_rgba(0,0,0,0.32)] backdrop-blur-2xl">
           <div className="flex h-[64px] items-center justify-between">
 
-            {/* BRAND */}
             <Link
               to="/"
               onClick={closeMenu}
@@ -45,7 +45,6 @@ function Navbar() {
               </span>
             </Link>
 
-            {/* DESKTOP NAV */}
             <div className="hidden min-w-0 flex-1 justify-center lg:flex">
               <div className="flex max-w-full items-center overflow-x-auto rounded-xl border border-white/[0.06] bg-white/[0.025] p-1 scrollbar-none">
                 {links.map((link) => (
@@ -81,38 +80,24 @@ function Navbar() {
               </div>
             </div>
 
-            {/* DESKTOP ACTIONS */}
             <div className="hidden shrink-0 items-center gap-2 lg:flex">
-              <a
-                href="https://github.com/shankar-uxcloud"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="GitHub"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] text-white/45 transition hover:border-white/20 hover:bg-white/5 hover:text-white"
+              <Link
+                to="/resume"
+                className="ml-1 inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-white/70 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
               >
-                GH
-              </a>
-
-              <a
-                href="https://www.linkedin.com/in/p-shankar-912463295/"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] text-sm font-semibold text-white/45 transition hover:border-white/20 hover:bg-white/5 hover:text-white"
-              >
-                in
-              </a>
+                <FileText size={15} />
+                Resume
+              </Link>
 
               <Link
                 to="/contact"
-                className="ml-1 inline-flex items-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/[0.08] px-4 py-2.5 text-sm font-medium text-emerald-300 transition-all duration-300 hover:border-emerald-300/50 hover:bg-emerald-400/[0.14] hover:text-white"
+                className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/[0.08] px-4 py-2.5 text-sm font-medium text-emerald-300 transition-all duration-300 hover:border-emerald-300/50 hover:bg-emerald-400/[0.14] hover:text-white"
               >
                 Let&apos;s Talk
                 <MoveUpRight size={15} />
               </Link>
             </div>
 
-            {/* MOBILE MENU BUTTON */}
             <button
               type="button"
               onClick={() => setOpen((value) => !value)}
@@ -124,7 +109,6 @@ function Navbar() {
             </button>
           </div>
 
-          {/* MOBILE MENU */}
           {open && (
             <div className="border-t border-white/[0.07] py-3 lg:hidden">
               <div className="space-y-1">
@@ -171,14 +155,25 @@ function Navbar() {
                 </a>
               </div>
 
-              <Link
-                to="/contact"
-                onClick={closeMenu}
-                className="mt-2 flex items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-black"
-              >
-                Let&apos;s Talk
-                <MoveUpRight size={15} />
-              </Link>
+              <div className="mt-2 grid grid-cols-2 gap-2">
+                <Link
+                  to="/resume"
+                  onClick={closeMenu}
+                  className="flex items-center justify-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-3 text-sm font-medium text-white"
+                >
+                  <FileText size={15} />
+                  Resume
+                </Link>
+
+                <Link
+                  to="/contact"
+                  onClick={closeMenu}
+                  className="flex items-center justify-center gap-2 rounded-xl bg-emerald-400 px-4 py-3 text-sm font-semibold text-black"
+                >
+                  Let&apos;s Talk
+                  <MoveUpRight size={15} />
+                </Link>
+              </div>
             </div>
           )}
         </nav>

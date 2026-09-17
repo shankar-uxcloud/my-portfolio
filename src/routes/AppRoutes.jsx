@@ -1,4 +1,4 @@
-﻿import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Home from "../pages/Home";
 import AboutPage from "../pages/AboutPage";
@@ -9,6 +9,7 @@ import CertificationsPage from "../pages/CertificationsPage";
 import GitHubPage from "../pages/GitHubPage";
 import ContactPage from "../pages/ContactPage";
 import AchievementsPage from "../pages/AchievementsPage";
+import ResumePage from "../pages/ResumePage";
 
 function AppRoutes() {
   return (
@@ -35,9 +36,10 @@ function AppRoutes() {
         element={<AchievementsPage />}
       />
 
+      <Route path="/resume" element={<ResumePage />} />
+
       <Route path="/contact" element={<ContactPage />} />
 
-      {/* Existing fallback */}
       <Route
         path="*"
         element={<Navigate to="/" replace />}
