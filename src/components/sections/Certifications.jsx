@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowUpRight,
   Award,
@@ -14,6 +14,7 @@ const certifications = [
     issuer: "OpenAI",
     date: "Sep 2026",
     credentialId: "1ko53c413b",
+    image: "/images/certifications/agents-workflows.png",
     skills: ["AI Agents"],
     description:
       "Completed the Agents and Workflows course through OpenAI Academy, covering practical concepts for building and working with AI agents and workflows.",
@@ -27,6 +28,7 @@ const certifications = [
     issuer: "Deloitte",
     date: "Sep 2026",
     credentialId: "6a9c31cb71585ae0649e7c83",
+    image: "/images/certifications/deloitte_tech.png",
     skills: [
       "Programming",
       "Python",
@@ -49,6 +51,7 @@ const certifications = [
     issuer: "Forage",
     date: "Aug 2026",
     credentialId: "6a913047ef1c758b88cb98f8",
+    image: "/images/certifications/tata-data-visualisation.png",
     skills: ["Data Visualization", "Data Analysis"],
     description:
       "Completed the Tata Forage virtual experience program on Data Visualisation, gaining practical experience in exploring data, creating effective visualisations, identifying insights, and communicating findings clearly.",
@@ -62,6 +65,7 @@ const certifications = [
     issuer: "OpenCV University",
     date: "Aug 2026",
     credentialId: "0fa02d287e214421a4debd2ee76cc813",
+    image: "/images/certifications/opencv-bootcamp.png",
     skills: ["OpenCV", "Computer Vision"],
     description:
       "Successfully completed the FREE OpenCV Bootcamp conducted by OpenCV University, gaining knowledge in computer vision, image processing, feature detection, image stitching, and HDR imaging using OpenCV.",
@@ -75,6 +79,7 @@ const certifications = [
     issuer: "Cognitive Class",
     date: "Aug 2026",
     credentialId: "bc72b944c44d4761bce29bbd12083014",
+    image: "/images/certifications/prompt-engineering.png",
     skills: ["Prompt Engineering"],
     description:
       "Completed the Prompt Engineering for Everyone course provided by IBM Skills Network through Cognitive Class, covering fundamental prompt engineering concepts and techniques for working with generative AI.",
@@ -88,6 +93,7 @@ const certifications = [
     issuer: "OpenAI",
     date: "Aug 2026",
     credentialId: "ld6fs562i6",
+    image: "/images/certifications/applied-ai-foundations.png",
     skills: ["Workflow Automation"],
     description:
       "Course Completion Certificate for Applied AI Foundations by OpenAI Academy, completed in August 2026.",
@@ -101,6 +107,7 @@ const certifications = [
     issuer: "OpenAI Academy",
     date: "Aug 2026",
     credentialId: "otwjzw1xdn",
+    image: "/images/certifications/ai-foundations.png",
     skills: ["Artificial Intelligence (AI)"],
     description:
       "Successfully completed the AI Foundations course by OpenAI Academy, covering AI fundamentals, large language models, prompt engineering, and responsible AI.",
@@ -137,7 +144,7 @@ const accentMap = {
   },
 };
 
-function CertificationMark({ number, accent }) {
+function CertificationMark({ number, accent, image }) {
   const colors = accentMap[accent] ?? accentMap.emerald;
 
   return (
@@ -157,21 +164,42 @@ function CertificationMark({ number, accent }) {
         }}
       />
 
-      <motion.div
-        whileHover={{ scale: 1.03, rotate: 1 }}
-        transition={{ duration: 0.3 }}
-        className="relative flex h-32 w-32 flex-col items-center justify-center rounded-[2rem] border border-white/[0.1] bg-black/60 shadow-[0_25px_70px_rgba(0,0,0,0.45)] backdrop-blur-xl"
-      >
-        <Award size={28} className={colors.text} />
+      {image ? (
+        <motion.div
+          whileHover={{ scale: 1.015 }}
+          transition={{ duration: 0.3 }}
+          className="relative h-[235px] w-full overflow-hidden rounded-[1.4rem] border border-white/[0.1] bg-black/60 shadow-[0_25px_70px_rgba(0,0,0,0.45)]"
+        >
+          <img
+            src={image}
+            alt="Certificate"
+            className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+          />
 
-        <span className="mt-3 font-mono text-[8px] uppercase tracking-[0.3em] text-white/25">
-          Certificate
-        </span>
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
+            <div className="flex items-center gap-2 font-mono text-[7px] uppercase tracking-[0.22em] text-white/60">
+              <span className={colors.line + " h-1.5 w-1.5 rounded-full"} />
+              Verified certificate Ã‚Â· {number}
+            </div>
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          whileHover={{ scale: 1.03, rotate: 1 }}
+          transition={{ duration: 0.3 }}
+          className="relative flex min-h-[235px] w-full flex-col items-center justify-center rounded-[1.6rem] border border-white/[0.08] bg-[#060808]"
+        >
+          <Award size={28} className={colors.text} />
 
-        <span className="mt-2 font-mono text-[8px] tracking-[0.22em] text-white/15">
-          {number}
-        </span>
-      </motion.div>
+          <span className="mt-3 font-mono text-[8px] uppercase tracking-[0.3em] text-white/25">
+            Certificate
+          </span>
+
+          <span className="mt-2 font-mono text-[8px] tracking-[0.22em] text-white/15">
+            {number}
+          </span>
+        </motion.div>
+      )}
 
       <div className="absolute bottom-4 left-4 flex items-center gap-2 font-mono text-[7px] uppercase tracking-[0.22em] text-white/20">
         <span
@@ -228,7 +256,7 @@ function Certifications() {
               className="inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.04] px-3.5 py-2 font-mono text-[9px] uppercase tracking-[0.3em] text-emerald-300/75"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
-              Certifications / 06
+              Certifications / 07
             </motion.div>
 
             <motion.h1
@@ -349,6 +377,7 @@ function Certifications() {
                     <CertificationMark
                       number={certificate.number}
                       accent={certificate.accent}
+                      image={certificate.image}
                     />
 
                     {/* Details */}
