@@ -1,16 +1,41 @@
-# React + Vite
+# P Shankar — Premium Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> A cinematic React + Vite portfolio showcasing my projects, skills, experience, certifications, achievements, GitHub work, and resume.
 
-Currently, two official plugins are available:
+## 🌐 Live Portfolio
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### 🚀 Visit My Portfolio
 
-## React Compiler
+**https://shankar-uxcloud.github.io/my-portfolio/**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Highlights
 
-## Expanding the ESLint configuration
+- Premium dark cinematic interface
+- Responsive React + Vite architecture
+- Animated page transitions and interactions
+- Projects and technical work showcase
+- Experience and internship timeline
+- Certifications with credential details
+- GitHub profile and project section
+- Achievements showcase
+- Dedicated resume viewer and download
+- Contact / Let's Talk section
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+- React
+- Vite
+- Tailwind CSS
+- Framer Motion
+- React Router
+- Lucide React
+- JavaScript
+- Git & GitHub
+
+## 🚀 Run Locally
+
+```bash
+git clone https://github.com/shankar-uxcloud/my-portfolio.git
+cd my-portfolio
+npm install
+npm run dev
