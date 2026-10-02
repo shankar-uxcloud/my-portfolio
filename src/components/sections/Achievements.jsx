@@ -10,8 +10,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
-const CERTIFICATE_IMAGE = "/images/1.jpeg";
-
+const CERTIFICATE_IMAGE = `${import.meta.env.BASE_URL}images/1.jpeg`;
 const achievement = {
   number: "01",
   title: "GOLD MEDAL",
