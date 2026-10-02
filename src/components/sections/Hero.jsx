@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Brain, Code2, Layers3 } from "lucide-react";
 import { Link } from "react-router-dom";
 

@@ -315,7 +315,7 @@ function About() {
                   </p>
 
                   <p className="mt-2 text-2xl font-semibold tracking-[0.1em] text-white">
-                    SHANKAR
+                   P SHANKAR
                   </p>
 
                   <p className="mt-2 text-[9px] uppercase tracking-[0.3em] text-white/30">
@@ -328,7 +328,7 @@ function About() {
                     PROFILE
                   </p>
                   <p className="mt-1 font-mono text-[8px] text-white/45">
-                    SHK / DEV
+                    DEV
                   </p>
                 </div>
 
