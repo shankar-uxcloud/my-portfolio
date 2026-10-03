@@ -212,7 +212,7 @@ export default function Hero() {
                     </p>
 
                     <h2 className="mt-2 text-2xl font-bold tracking-tight text-white">
-                      P Shankar
+                      P SHANKAR
                     </h2>
 
                     <p className="mt-1 text-sm text-white/45">
