@@ -1,20 +1,41 @@
 @import "tailwindcss";
 
-:root {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: #f5f5f5;
-  background: #050505;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* =========================================================
+   BASE
+========================================================= */
 
-* {
-  box-sizing: border-box;
+:root {
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color-scheme: dark;
+
+  --bg-main: #020303;
+  --bg-secondary: #060808;
+  --bg-card: rgba(255, 255, 255, 0.018);
+  --bg-card-hover: rgba(255, 255, 255, 0.035);
+
+  --text-main: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-muted: rgba(255, 255, 255, 0.32);
+
+  --border-main: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  --accent: #34d399;
+  --accent-soft: rgba(52, 211, 153, 0.08);
+  --accent-border: rgba(52, 211, 153, 0.25);
+
+  --shadow-main: rgba(0, 0, 0, 0.45);
+
+  --selection-bg: #34d399;
+  --selection-text: #020303;
 }
 
 html {
@@ -25,28 +46,373 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-  background: #050505;
+
+  background: var(--bg-main);
+  color: var(--text-main);
+
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease;
+
+  overflow-x: hidden;
+}
+
+body,
+button,
+a,
+input,
+textarea,
+select {
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+::selection {
+  background: var(--selection-bg);
+  color: var(--selection-text);
 }
 
 button,
 a {
-  font: inherit;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 img {
   max-width: 100%;
-  display: block;
 }
 
-#root {
-  min-height: 100vh;
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg-main: #020303;
+  --bg-secondary: #060808;
+  --bg-card: rgba(255, 255, 255, 0.018);
+  --bg-card-hover: rgba(255, 255, 255, 0.035);
+
+  --text-main: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.55);
+  --text-muted: rgba(255, 255, 255, 0.32);
+
+  --border-main: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+
+  --accent: #34d399;
+  --accent-soft: rgba(52, 211, 153, 0.08);
+  --accent-border: rgba(52, 211, 153, 0.25);
+}
+
+/* =========================================================
+   LIGHT MODE
+========================================================= */
+
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --bg-main: #f5f7fa;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-card-hover: #ffffff;
+
+  --text-main: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+
+  --border-main: rgba(17, 24, 39, 0.1);
+  --border-strong: rgba(17, 24, 39, 0.16);
+
+  --accent: #059669;
+  --accent-soft: rgba(5, 150, 105, 0.08);
+  --accent-border: rgba(5, 150, 105, 0.25);
+
+  --selection-bg: #059669;
+  --selection-text: #ffffff;
+}
+
+/* =========================================================
+   NEON MODE
+========================================================= */
+
+html[data-theme="neon"] {
+  color-scheme: dark;
+
+  --bg-main: #000500;
+  --bg-secondary: #020b04;
+  --bg-card: rgba(0, 255, 110, 0.025);
+  --bg-card-hover: rgba(0, 255, 110, 0.06);
+
+  --text-main: #f0fff5;
+  --text-secondary: rgba(200, 255, 220, 0.68);
+  --text-muted: rgba(140, 255, 175, 0.4);
+
+  --border-main: rgba(0, 255, 110, 0.18);
+  --border-strong: rgba(0, 255, 110, 0.35);
+
+  --accent: #00ff73;
+  --accent-soft: rgba(0, 255, 115, 0.1);
+  --accent-border: rgba(0, 255, 115, 0.45);
+
+  --selection-bg: #00ff73;
+  --selection-text: #001508;
+}
+
+/* =========================================================
+   CYBERPUNK MODE
+========================================================= */
+
+html[data-theme="cyberpunk"] {
+  color-scheme: dark;
+
+  --bg-main: #070312;
+  --bg-secondary: #0d061c;
+  --bg-card: rgba(145, 70, 255, 0.04);
+  --bg-card-hover: rgba(145, 70, 255, 0.09);
+
+  --text-main: #faf7ff;
+  --text-secondary: rgba(224, 208, 255, 0.68);
+  --text-muted: rgba(185, 145, 255, 0.4);
+
+  --border-main: rgba(173, 105, 255, 0.2);
+  --border-strong: rgba(205, 151, 255, 0.38);
+
+  --accent: #b76cff;
+  --accent-soft: rgba(183, 108, 255, 0.1);
+  --accent-border: rgba(183, 108, 255, 0.4);
+
+  --selection-bg: #b76cff;
+  --selection-text: #10001c;
+}
+
+/* =========================================================
+   PINK MODE
+========================================================= */
+
+html[data-theme="pink"] {
+  color-scheme: dark;
+
+  --bg-main: #100308;
+  --bg-secondary: #18050d;
+  --bg-card: rgba(255, 70, 150, 0.035);
+  --bg-card-hover: rgba(255, 70, 150, 0.075);
+
+  --text-main: #fff7fb;
+  --text-secondary: rgba(255, 220, 235, 0.68);
+  --text-muted: rgba(255, 160, 200, 0.4);
+
+  --border-main: rgba(255, 92, 164, 0.18);
+  --border-strong: rgba(255, 92, 164, 0.35);
+
+  --accent: #ff4f9a;
+  --accent-soft: rgba(255, 79, 154, 0.1);
+  --accent-border: rgba(255, 79, 154, 0.4);
+
+  --selection-bg: #ff4f9a;
+  --selection-text: #26000f;
+}
+
+/* =========================================================
+   EYE COMFORT MODE
+========================================================= */
+
+html[data-theme="comfort"] {
+  color-scheme: dark;
+
+  --bg-main: #17150f;
+  --bg-secondary: #211e15;
+  --bg-card: rgba(255, 220, 150, 0.035);
+  --bg-card-hover: rgba(255, 220, 150, 0.065);
+
+  --text-main: #f4ead0;
+  --text-secondary: rgba(230, 215, 175, 0.67);
+  --text-muted: rgba(205, 185, 140, 0.42);
+
+  --border-main: rgba(225, 196, 130, 0.16);
+  --border-strong: rgba(225, 196, 130, 0.3);
+
+  --accent: #d6a84f;
+  --accent-soft: rgba(214, 168, 79, 0.09);
+  --accent-border: rgba(214, 168, 79, 0.32);
+
+  --selection-bg: #d6a84f;
+  --selection-text: #1c1507;
+}
+
+/* =========================================================
+   GLOBAL THEME OVERRIDES
+========================================================= */
+
+body {
+  background: var(--bg-main) !important;
+  color: var(--text-main);
+}
+
+/* Main dark backgrounds */
+html[data-theme="light"] .bg-\[\#020303\],
+html[data-theme="light"] .bg-\[\#020303\]\/95 {
+  background-color: var(--bg-main) !important;
+}
+
+html[data-theme="light"] .bg-\[\#060808\] {
+  background-color: var(--bg-secondary) !important;
+}
+
+html[data-theme="neon"] .bg-\[\#020303\],
+html[data-theme="neon"] .bg-\[\#060808\],
+html[data-theme="cyberpunk"] .bg-\[\#020303\],
+html[data-theme="cyberpunk"] .bg-\[\#060808\],
+html[data-theme="pink"] .bg-\[\#020303\],
+html[data-theme="pink"] .bg-\[\#060808\],
+html[data-theme="comfort"] .bg-\[\#020303\],
+html[data-theme="comfort"] .bg-\[\#060808\] {
+  background-color: var(--bg-main) !important;
+}
+
+/* White text */
+html[data-theme="light"] .text-white {
+  color: var(--text-main) !important;
+}
+
+/* Muted white text */
+html[data-theme="light"] .text-white\/20,
+html[data-theme="light"] .text-white\/25,
+html[data-theme="light"] .text-white\/30,
+html[data-theme="light"] .text-white\/40,
+html[data-theme="light"] .text-white\/45,
+html[data-theme="light"] .text-white\/50,
+html[data-theme="light"] .text-white\/55,
+html[data-theme="light"] .text-white\/60 {
+  color: var(--text-secondary) !important;
+}
+
+/* Dark card surfaces */
+html[data-theme="light"] .bg-white\/\[0\.018\],
+html[data-theme="light"] .bg-white\/\[0\.025\],
+html[data-theme="light"] .bg-white\/\[0\.035\] {
+  background-color: var(--bg-card) !important;
+}
+
+/* Borders */
+html[data-theme="light"] .border-white\/\[0\.07\],
+html[data-theme="light"] .border-white\/\[0\.08\],
+html[data-theme="light"] .border-white\/\[0\.1\],
+html[data-theme="light"] .border-white\/\[0\.14\] {
+  border-color: var(--border-main) !important;
+}
+
+/* =========================================================
+   LIGHT MODE — FORCE DARK TEXT WHERE APPROPRIATE
+========================================================= */
+
+html[data-theme="light"] h1,
+html[data-theme="light"] h2,
+html[data-theme="light"] h3,
+html[data-theme="light"] h4,
+html[data-theme="light"] p,
+html[data-theme="light"] span {
+  text-shadow: none;
+}
+
+/* =========================================================
+   THEME SWITCHER
+========================================================= */
+
+.theme-trigger {
+  color: var(--text-main);
+  background: var(--bg-card);
+  border-color: var(--border-main);
+}
+
+.theme-trigger:hover {
+  border-color: var(--accent-border);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.theme-menu {
+  background: color-mix(
+    in srgb,
+    var(--bg-secondary) 94%,
+    transparent
+  );
+  border-color: var(--border-main);
+  box-shadow:
+    0 25px 80px var(--shadow-main),
+    0 0 0 1px var(--border-main);
+}
+
+.theme-menu-label {
+  color: var(--text-muted);
+}
+
+.theme-option {
+  color: var(--text-secondary);
+}
+
+.theme-option:hover {
+  color: var(--text-main);
+  background: var(--accent-soft);
+}
+
+.theme-option-active {
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+/* =========================================================
+   NEON EFFECTS
+========================================================= */
+
+html[data-theme="neon"] .theme-trigger,
+html[data-theme="neon"] .theme-option-active {
+  box-shadow: 0 0 18px rgba(0, 255, 115, 0.12);
+}
+
+html[data-theme="neon"] a:hover {
+  text-shadow: 0 0 14px rgba(0, 255, 115, 0.55);
+}
+
+/* =========================================================
+   CYBERPUNK EFFECTS
+========================================================= */
+
+html[data-theme="cyberpunk"] .theme-trigger,
+html[data-theme="cyberpunk"] .theme-option-active {
+  box-shadow: 0 0 20px rgba(183, 108, 255, 0.15);
+}
+
+html[data-theme="cyberpunk"] a:hover {
+  text-shadow: 0 0 14px rgba(183, 108, 255, 0.55);
+}
+
+/* =========================================================
+   PINK EFFECTS
+========================================================= */
+
+html[data-theme="pink"] .theme-trigger,
+html[data-theme="pink"] .theme-option-active {
+  box-shadow: 0 0 20px rgba(255, 79, 154, 0.14);
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

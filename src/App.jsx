@@ -1,70 +1,65 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import Navbar from "./components/layout/Navbar";
-import Footer from "./components/layout/Footer";
 import Loader from "./components/ui/Loader";
 import AmbientBackground from "./components/ui/AmbientBackground";
 import CursorGlow from "./components/ui/CursorGlow";
-
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import AppRoutes from "./routes/AppRoutes";
+import { ThemeProvider } from "./context/ThemeContext";
 
-function App() {
-  const [loading, setLoading] = useState(true);
+function AppContent() {
   const location = useLocation();
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "instant",
-    });
-  }, [location.pathname]);
-
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#020203] text-white">
-      <AnimatePresence mode="wait">
-        {loading && (
-          <Loader
-            onComplete={() => {
-              setLoading(false);
-            }}
-          />
-        )}
-      </AnimatePresence>
+    <>
+      {/* Cinematic loader preserved */}
+      <Loader />
 
-      {!loading && (
-        <motion.div
+      {/* Global ambient effects */}
+      <AmbientBackground />
+      <CursorGlow />
+
+      {/* Navigation */}
+      <Navbar />
+
+      {/* Page transitions */}
+      <AnimatePresence mode="wait">
+        <motion.main
           key={location.pathname}
           initial={{
             opacity: 0,
-            y: 10,
-            filter: "blur(8px)",
+            y: 14,
           }}
           animate={{
             opacity: 1,
             y: 0,
-            filter: "blur(0px)",
+          }}
+          exit={{
+            opacity: 0,
+            y: -10,
           }}
           transition={{
-            duration: 0.55,
+            duration: 0.35,
             ease: [0.16, 1, 0.3, 1],
           }}
-          className="relative min-h-screen"
+          className="relative z-10"
         >
-          <AmbientBackground />
-          <CursorGlow />
+          <AppRoutes />
+        </motion.main>
+      </AnimatePresence>
 
-          <Navbar />
+      <Footer />
+    </>
+  );
+}
 
-          <main className="relative z-10">
-            <AppRoutes />
-          </main>
-
-          <Footer />
-        </motion.div>
-      )}
-    </div>
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

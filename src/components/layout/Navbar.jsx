@@ -1,6 +1,7 @@
-import { FileText, Menu, MoveUpRight, X } from "lucide-react";
+﻿import { FileText, Menu, MoveUpRight, X } from "lucide-react";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
+import ThemeSwitcher from "../ui/ThemeSwitcher";
 
 function Navbar() {
   const [open, setOpen] = useState(false);
@@ -25,6 +26,9 @@ function Navbar() {
         <nav className="relative rounded-2xl border border-white/[0.08] bg-black/65 px-3 shadow-[0_20px_80px_rgba(0,0,0,0.32)] backdrop-blur-2xl">
           <div className="flex h-[64px] items-center justify-between">
 
+            {/* =====================================================
+                LOGO
+            ====================================================== */}
             <Link
               to="/"
               onClick={closeMenu}
@@ -45,6 +49,9 @@ function Navbar() {
               </span>
             </Link>
 
+            {/* =====================================================
+                DESKTOP NAVIGATION
+            ====================================================== */}
             <div className="hidden min-w-0 flex-1 justify-center lg:flex">
               <div className="flex max-w-full items-center overflow-x-auto rounded-xl border border-white/[0.06] bg-white/[0.025] p-1 scrollbar-none">
                 {links.map((link) => (
@@ -80,7 +87,15 @@ function Navbar() {
               </div>
             </div>
 
+            {/* =====================================================
+                DESKTOP ACTIONS + THEME SWITCHER
+            ====================================================== */}
             <div className="hidden shrink-0 items-center gap-2 lg:flex">
+
+              {/* Theme Switcher */}
+              <ThemeSwitcher />
+
+              {/* Resume */}
               <Link
                 to="/resume"
                 className="ml-1 inline-flex items-center gap-2 rounded-xl border border-white/[0.08] bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-white/70 transition-all duration-300 hover:border-white/20 hover:bg-white/[0.08] hover:text-white"
@@ -89,6 +104,7 @@ function Navbar() {
                 Resume
               </Link>
 
+              {/* Let's Talk */}
               <Link
                 to="/contact"
                 className="inline-flex items-center gap-2 rounded-xl border border-emerald-400/25 bg-emerald-400/[0.08] px-4 py-2.5 text-sm font-medium text-emerald-300 transition-all duration-300 hover:border-emerald-300/50 hover:bg-emerald-400/[0.14] hover:text-white"
@@ -98,6 +114,9 @@ function Navbar() {
               </Link>
             </div>
 
+            {/* =====================================================
+                MOBILE MENU BUTTON
+            ====================================================== */}
             <button
               type="button"
               onClick={() => setOpen((value) => !value)}
@@ -109,8 +128,13 @@ function Navbar() {
             </button>
           </div>
 
+          {/* =====================================================
+              MOBILE MENU
+          ====================================================== */}
           {open && (
             <div className="border-t border-white/[0.07] py-3 lg:hidden">
+
+              {/* Navigation links */}
               <div className="space-y-1">
                 {links.map((link) => (
                   <NavLink
@@ -133,7 +157,17 @@ function Navbar() {
                 ))}
               </div>
 
-              <div className="mt-3 grid grid-cols-2 gap-2">
+              {/* Theme */}
+              <div className="mt-3 flex items-center justify-between rounded-xl border border-white/[0.08] bg-white/[0.025] px-4 py-3">
+                <span className="text-sm text-white/50">
+                  Appearance
+                </span>
+
+                <ThemeSwitcher />
+              </div>
+
+              {/* GitHub + LinkedIn */}
+              <div className="mt-2 grid grid-cols-2 gap-2">
                 <a
                   href="https://github.com/shankar-uxcloud"
                   target="_blank"
@@ -155,6 +189,7 @@ function Navbar() {
                 </a>
               </div>
 
+              {/* Resume + Let's Talk */}
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <Link
                   to="/resume"
