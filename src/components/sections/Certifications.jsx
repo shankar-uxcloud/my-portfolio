@@ -7,6 +7,15 @@ import {
   Sparkles,
 } from "lucide-react";
 
+/* -------------------------------------------------------
+   GitHub Pages-safe image path
+------------------------------------------------------- */
+const certificationImage = (fileName) =>
+  `${import.meta.env.BASE_URL}images/certifications/${fileName}`;
+
+/* -------------------------------------------------------
+   Certifications
+------------------------------------------------------- */
 const certifications = [
   {
     number: "01",
@@ -14,7 +23,7 @@ const certifications = [
     issuer: "OpenAI",
     date: "Sep 2026",
     credentialId: "1ko53c413b",
-    image: "/images/certifications/agents-workflows.png",
+    image: certificationImage("agents-workflows.png"),
     skills: ["AI Agents"],
     description:
       "Completed the Agents and Workflows course through OpenAI Academy, covering practical concepts for building and working with AI agents and workflows.",
@@ -22,13 +31,14 @@ const certifications = [
       "https://academy.openai.com/public/certificate/1ko53c413b",
     accent: "emerald",
   },
+
   {
     number: "02",
     title: "Deloitte Australia - Technology Job Simulation",
     issuer: "Deloitte",
     date: "Sep 2026",
     credentialId: "6a9c31cb71585ae0649e7c83",
-    image: "/images/certifications/deloitte_tech.png",
+    image: certificationImage("deloitte_tech.png"),
     skills: [
       "Programming",
       "Python",
@@ -44,6 +54,7 @@ const certifications = [
       "https://www.theforage.com/completion-certificates/9PBTqmSxAf6zZTseP/udmxiyHeqYQLkTPvf_9PBTqm4",
     accent: "violet",
   },
+
   {
     number: "03",
     title:
@@ -51,7 +62,7 @@ const certifications = [
     issuer: "Forage",
     date: "Aug 2026",
     credentialId: "6a913047ef1c758b88cb98f8",
-    image: "/images/certifications/tata-data-visualisation.png",
+    image: certificationImage("tata-data-visualisation.png"),
     skills: ["Data Visualization", "Data Analysis"],
     description:
       "Completed the Tata Forage virtual experience program on Data Visualisation, gaining practical experience in exploring data, creating effective visualisations, identifying insights, and communicating findings clearly.",
@@ -59,13 +70,14 @@ const certifications = [
       "https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/MyXvBcppsW2FkNYCX",
     accent: "blue",
   },
+
   {
     number: "04",
     title: "FREE OpenCV Bootcamp",
     issuer: "OpenCV University",
     date: "Aug 2026",
     credentialId: "0fa02d287e214421a4debd2ee76cc813",
-    image: "/images/certifications/opencv-bootcamp.png",
+    image: certificationImage("opencv-bootcamp.png"),
     skills: ["OpenCV", "Computer Vision"],
     description:
       "Successfully completed the FREE OpenCV Bootcamp conducted by OpenCV University, gaining knowledge in computer vision, image processing, feature detection, image stitching, and HDR imaging using OpenCV.",
@@ -73,13 +85,14 @@ const certifications = [
       "https://courses.opencv.org/certificates/0fa02d287e214421a4debd2ee76cc813",
     accent: "emerald",
   },
+
   {
     number: "05",
     title: "Prompt Engineering for Everyone",
     issuer: "Cognitive Class",
     date: "Aug 2026",
     credentialId: "bc72b944c44d4761bce29bbd12083014",
-    image: "/images/certifications/prompt-engineering.png",
+    image: certificationImage("prompt-engineering.png"),
     skills: ["Prompt Engineering"],
     description:
       "Completed the Prompt Engineering for Everyone course provided by IBM Skills Network through Cognitive Class, covering fundamental prompt engineering concepts and techniques for working with generative AI.",
@@ -87,13 +100,14 @@ const certifications = [
       "https://courses.cognitiveclass.ai/certificates/bc72b944c44d4761bce29bbd12083014",
     accent: "violet",
   },
+
   {
     number: "06",
     title: "Applied AI Foundations",
     issuer: "OpenAI",
     date: "Aug 2026",
     credentialId: "ld6fs562i6",
-    image: "/images/certifications/applied-ai-foundations.png",
+    image: certificationImage("applied-ai-foundations.png"),
     skills: ["Workflow Automation"],
     description:
       "Course Completion Certificate for Applied AI Foundations by OpenAI Academy, completed in August 2026.",
@@ -101,13 +115,14 @@ const certifications = [
       "https://academy.openai.com/public/certificate/ld6fs562i6",
     accent: "green",
   },
+
   {
     number: "07",
     title: "AI Foundations",
     issuer: "OpenAI Academy",
     date: "Aug 2026",
     credentialId: "otwjzw1xdn",
-    image: "/images/certifications/ai-foundations.png",
+    image: certificationImage("ai-foundations.png"),
     skills: ["Artificial Intelligence (AI)"],
     description:
       "Successfully completed the AI Foundations course by OpenAI Academy, covering AI fundamentals, large language models, prompt engineering, and responsible AI.",
@@ -115,8 +130,30 @@ const certifications = [
       "https://academy.openai.com/public/certificate/otwjzw1xdn",
     accent: "blue",
   },
+
+  /* -------------------------------------------------------
+     NEW — 08
+  ------------------------------------------------------- */
+  {
+    number: "08",
+    title: "Gemini Certification for Students (K12)",
+    issuer: "Google for Education",
+    date: "Sep 2026",
+    expires: "Sep 2029",
+    credentialId: "480551027",
+    image: certificationImage("gemini-certification-k12.png"),
+    skills: ["Google Gemini"],
+    description:
+      "Completed the Gemini Certification for Students (K12) by Google for Education with a score of 89 on September 20, 2026.",
+    credential:
+      "https://www.linkedin.com/in/p-shankar-912463295/details/certifications/",
+    accent: "blue",
+  },
 ];
 
+/* -------------------------------------------------------
+   Accent colors
+------------------------------------------------------- */
 const accentMap = {
   emerald: {
     glow: "bg-emerald-400/[0.06]",
@@ -124,18 +161,21 @@ const accentMap = {
     border: "hover:border-emerald-300/25",
     line: "bg-emerald-400",
   },
+
   violet: {
     glow: "bg-violet-400/[0.06]",
     text: "text-violet-300",
     border: "hover:border-violet-300/25",
     line: "bg-violet-400",
   },
+
   blue: {
     glow: "bg-blue-400/[0.06]",
     text: "text-blue-300",
     border: "hover:border-blue-300/25",
     line: "bg-blue-400",
   },
+
   green: {
     glow: "bg-emerald-300/[0.06]",
     text: "text-emerald-200",
@@ -144,6 +184,9 @@ const accentMap = {
   },
 };
 
+/* -------------------------------------------------------
+   Certificate visual
+------------------------------------------------------- */
 function CertificationMark({ number, accent, image }) {
   const colors = accentMap[accent] ?? accentMap.emerald;
 
@@ -172,14 +215,19 @@ function CertificationMark({ number, accent, image }) {
         >
           <img
             src={image}
-            alt="Certificate"
+            alt={`Certificate ${number}`}
             className="h-full w-full object-contain p-3 transition duration-500 group-hover:scale-[1.02]"
+            onError={(event) => {
+              event.currentTarget.style.display = "none";
+            }}
           />
 
           <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent p-4">
             <div className="flex items-center gap-2 font-mono text-[7px] uppercase tracking-[0.22em] text-white/60">
-              <span className={colors.line + " h-1.5 w-1.5 rounded-full"} />
-              Verified certificate Ã‚Â· {number}
+              <span
+                className={`${colors.line} h-1.5 w-1.5 rounded-full`}
+              />
+              Verified certificate · {number}
             </div>
           </div>
         </motion.div>
@@ -211,10 +259,12 @@ function CertificationMark({ number, accent, image }) {
   );
 }
 
+/* -------------------------------------------------------
+   Main Certifications page
+------------------------------------------------------- */
 function Certifications() {
   return (
     <section className="relative min-h-screen overflow-hidden bg-[#020303] px-5 pb-28 pt-32 text-white sm:px-8 lg:px-12">
-      {/* Background */}
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-24 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-emerald-500/[0.035] blur-[140px]"
@@ -242,11 +292,7 @@ function Certifications() {
       />
 
       <div className="relative mx-auto max-w-7xl">
-
-        {/* =====================================================
-            HEADER
-        ====================================================== */}
-
+        {/* Header */}
         <div className="grid gap-10 lg:grid-cols-[1fr_0.65fr] lg:items-end">
           <div>
             <motion.div
@@ -256,7 +302,7 @@ function Certifications() {
               className="inline-flex items-center gap-2 rounded-full border border-emerald-400/15 bg-emerald-400/[0.04] px-3.5 py-2 font-mono text-[9px] uppercase tracking-[0.3em] text-emerald-300/75"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
-              Certifications / 07
+              Certifications / 08
             </motion.div>
 
             <motion.h1
@@ -295,10 +341,7 @@ function Certifications() {
           </motion.div>
         </div>
 
-        {/* =====================================================
-            STATS STRIP
-        ====================================================== */}
-
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
@@ -309,9 +352,7 @@ function Certifications() {
             <p className="font-mono text-[8px] uppercase tracking-[0.25em] text-white/20">
               Credentials
             </p>
-            <p className="mt-3 text-3xl font-semibold text-white">
-              07
-            </p>
+            <p className="mt-3 text-3xl font-semibold text-white">08</p>
           </div>
 
           <div className="border-b border-white/[0.07] p-6 sm:border-b-0 sm:border-r">
@@ -333,10 +374,7 @@ function Certifications() {
           </div>
         </motion.div>
 
-        {/* =====================================================
-            CERTIFICATION GRID
-        ====================================================== */}
-
+        {/* Archive */}
         <div className="mt-20">
           <div className="mb-8 flex items-center gap-4">
             <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/30">
@@ -346,7 +384,7 @@ function Certifications() {
             <div className="h-px flex-1 bg-white/[0.08]" />
 
             <span className="font-mono text-[9px] text-white/25">
-              07 records
+              08 records
             </span>
           </div>
 
@@ -372,15 +410,12 @@ function Certifications() {
                   className={`group overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.018] p-4 transition duration-500 ${accent.border} hover:bg-white/[0.025] sm:p-5`}
                 >
                   <div className="grid gap-6 lg:grid-cols-[0.48fr_0.52fr] lg:items-center">
-
-                    {/* Visual */}
                     <CertificationMark
                       number={certificate.number}
                       accent={certificate.accent}
                       image={certificate.image}
                     />
 
-                    {/* Details */}
                     <div className="p-2 sm:p-5 lg:p-7">
                       <div className="flex items-center justify-between gap-5">
                         <span
@@ -413,7 +448,13 @@ function Certifications() {
                         {certificate.description}
                       </p>
 
-                      {/* Skills */}
+                      {/* Extra expiry information for Gemini */}
+                      {certificate.expires && (
+                        <p className="mt-3 font-mono text-[8px] uppercase tracking-[0.18em] text-white/25">
+                          Expires · {certificate.expires}
+                        </p>
+                      )}
+
                       <div className="mt-6 flex flex-wrap gap-2">
                         {certificate.skills.map((skill) => (
                           <span
@@ -425,7 +466,6 @@ function Certifications() {
                         ))}
                       </div>
 
-                      {/* Credential ID */}
                       <div className="mt-6 rounded-xl border border-white/[0.06] bg-black/20 px-4 py-3">
                         <p className="font-mono text-[7px] uppercase tracking-[0.22em] text-white/18">
                           Credential ID
@@ -436,7 +476,6 @@ function Certifications() {
                         </p>
                       </div>
 
-                      {/* Action */}
                       <div className="mt-7">
                         <a
                           href={certificate.credential}
@@ -462,10 +501,7 @@ function Certifications() {
           </div>
         </div>
 
-        {/* =====================================================
-            LEARNING PHILOSOPHY
-        ====================================================== */}
-
+        {/* Bottom CTA */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
