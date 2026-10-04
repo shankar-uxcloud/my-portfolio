@@ -7,40 +7,56 @@ export const THEMES = {
     label: "Dark",
     icon: "🌑",
   },
+
   light: {
     label: "Light",
     icon: "☀️",
   },
+
   neon: {
     label: "Neon",
     icon: "💚",
   },
-  cyberpunk: {
-    label: "Cyberpunk",
-    icon: "💜",
-  },
-  pink: {
-    label: "Pink",
-    icon: "🌸",
-  },
-  comfort: {
-    label: "Eye Comfort",
-    icon: "👁️",
-  },
 };
 
+function getInitialTheme() {
+  try {
+    const savedTheme = localStorage.getItem("portfolio-theme");
+
+    if (savedTheme && THEMES[savedTheme]) {
+      return savedTheme;
+    }
+  } catch {
+    // Ignore localStorage errors
+  }
+
+  return "dark";
+}
+
 export function ThemeProvider({ children }) {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("portfolio-theme") || "dark";
-  });
+  const [theme, setTheme] = useState(getInitialTheme);
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("portfolio-theme", theme);
+    const html = document.documentElement;
+    const body = document.body;
+
+    // Apply theme to HTML
+    html.setAttribute("data-theme", theme);
+
+    // Also apply to body
+    body.setAttribute("data-theme", theme);
+
+    // Save selected theme
+    try {
+      localStorage.setItem("portfolio-theme", theme);
+    } catch {
+      // Ignore localStorage errors
+    }
   }, [theme]);
 
   const changeTheme = (newTheme) => {
     if (!THEMES[newTheme]) return;
+
     setTheme(newTheme);
   };
 

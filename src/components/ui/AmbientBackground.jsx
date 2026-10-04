@@ -6,8 +6,20 @@ function AmbientBackground() {
       className="pointer-events-none fixed inset-0 z-0 overflow-hidden"
       aria-hidden="true"
     >
-      <div className="absolute inset-0 bg-[#020203]" />
+      {/* =====================================================
+          BASE BACKGROUND
+      ===================================================== */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background: "var(--bg-main)",
+          transition: "background 0.5s ease",
+        }}
+      />
 
+      {/* =====================================================
+          PRIMARY ACCENT GLOW
+      ===================================================== */}
       <motion.div
         animate={{
           x: ["-4%", "4%", "-4%"],
@@ -19,9 +31,16 @@ function AmbientBackground() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute left-[5%] top-[10%] h-[30rem] w-[30rem] rounded-full bg-emerald-500/[0.035] blur-[120px]"
+        className="absolute left-[5%] top-[10%] h-[30rem] w-[30rem] rounded-full blur-[120px]"
+        style={{
+          background: "var(--accent)",
+          opacity: "var(--glow-opacity)",
+        }}
       />
 
+      {/* =====================================================
+          SECONDARY ACCENT GLOW
+      ===================================================== */}
       <motion.div
         animate={{
           x: ["4%", "-4%", "4%"],
@@ -33,15 +52,23 @@ function AmbientBackground() {
           repeat: Infinity,
           ease: "easeInOut",
         }}
-        className="absolute bottom-[5%] right-[-5%] h-[28rem] w-[28rem] rounded-full bg-white/[0.025] blur-[120px]"
+        className="absolute bottom-[5%] right-[-5%] h-[28rem] w-[28rem] rounded-full blur-[120px]"
+        style={{
+          background: "var(--accent)",
+          opacity: "var(--glow-opacity-secondary)",
+        }}
       />
 
+      {/* =====================================================
+          GRID
+      ===================================================== */}
       <div
-        className="absolute inset-0 opacity-[0.035]"
+        className="absolute inset-0"
         style={{
+          opacity: "var(--grid-opacity)",
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px)
+            linear-gradient(var(--grid-line) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)
           `,
           backgroundSize: "48px 48px",
           maskImage:
@@ -51,7 +78,16 @@ function AmbientBackground() {
         }}
       />
 
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.48)_100%)]" />
+      {/* =====================================================
+          VIGNETTE
+      ===================================================== */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(circle at center, transparent 20%, var(--vignette) 100%)",
+        }}
+      />
     </div>
   );
 }

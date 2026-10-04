@@ -1,4 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
 import Loader from "./components/ui/Loader";
@@ -11,20 +12,37 @@ import { ThemeProvider } from "./context/ThemeContext";
 
 function AppContent() {
   const location = useLocation();
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <>
-      {/* Cinematic loader preserved */}
-      <Loader />
+      {/* =====================================================
+          CINEMATIC LOADER
+      ===================================================== */}
+      <AnimatePresence>
+        {isLoading && (
+          <Loader
+            onComplete={() => {
+              setIsLoading(false);
+            }}
+          />
+        )}
+      </AnimatePresence>
 
-      {/* Global ambient effects */}
+      {/* =====================================================
+          GLOBAL BACKGROUND EFFECTS
+      ===================================================== */}
       <AmbientBackground />
       <CursorGlow />
 
-      {/* Navigation */}
+      {/* =====================================================
+          NAVBAR
+      ===================================================== */}
       <Navbar />
 
-      {/* Page transitions */}
+      {/* =====================================================
+          PAGE CONTENT
+      ===================================================== */}
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname}
@@ -50,10 +68,17 @@ function AppContent() {
         </motion.main>
       </AnimatePresence>
 
+      {/* =====================================================
+          FOOTER
+      ===================================================== */}
       <Footer />
     </>
   );
 }
+
+/* =========================================================
+   APP
+========================================================= */
 
 function App() {
   return (
