@@ -36,7 +36,7 @@ function Contact() {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden px-5 pb-24 pt-32 sm:px-8 lg:px-12">
+    <section className="theme-page relative min-h-screen overflow-hidden px-5 pb-24 pt-32 sm:px-8 lg:px-12">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-20 h-[34rem] w-[34rem] -translate-x-1/2 rounded-full bg-emerald-500/[0.06] blur-[140px]"

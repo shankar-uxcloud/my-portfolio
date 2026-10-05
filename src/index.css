@@ -59,6 +59,13 @@
 
   --selection-bg: #34d399;
   --selection-text: #020303;
+
+  /* Shared effect tokens consumed by the reusable ambient layer. */
+  --glow-opacity: 0.035;
+  --glow-opacity-secondary: 0.022;
+  --grid-line: rgba(255, 255, 255, 0.075);
+  --grid-opacity: 0.65;
+  --vignette: rgba(0, 0, 0, 0.18);
 }
 
 
@@ -103,6 +110,12 @@ html[data-theme="dark"] {
 
   --selection-bg: #34d399;
   --selection-text: #020303;
+
+  --glow-opacity: 0.035;
+  --glow-opacity-secondary: 0.022;
+  --grid-line: rgba(255, 255, 255, 0.075);
+  --grid-opacity: 0.65;
+  --vignette: rgba(0, 0, 0, 0.2);
 }
 
 
@@ -147,6 +160,12 @@ html[data-theme="light"] {
 
   --selection-bg: #047857;
   --selection-text: #ffffff;
+
+  --glow-opacity: 0.018;
+  --glow-opacity-secondary: 0.012;
+  --grid-line: rgba(15, 23, 42, 0.06);
+  --grid-opacity: 0.42;
+  --vignette: rgba(15, 23, 42, 0.04);
 }
 
 
@@ -191,6 +210,12 @@ html[data-theme="neon"] {
 
   --selection-bg: #00ff73;
   --selection-text: #001508;
+
+  --glow-opacity: 0.11;
+  --glow-opacity-secondary: 0.075;
+  --grid-line: rgba(0, 255, 115, 0.105);
+  --grid-opacity: 0.88;
+  --vignette: rgba(0, 12, 5, 0.36);
 }
 
 
@@ -1157,5 +1182,220 @@ footer {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* =========================================================
+   THEME SURFACE BRIDGE
+
+   Most sections intentionally use the existing Tailwind utility
+   vocabulary. These mappings keep that vocabulary theme-aware,
+   including utilities that otherwise retain a dark-only surface.
+========================================================= */
+
+html[data-theme="light"] [class*="bg-black/"],
+html[data-theme="light"] [class~="bg-black"] {
+  background-color: var(--surface-solid) !important;
+}
+
+html[data-theme="light"] [class*="bg-[#020"],
+html[data-theme="light"] [class*="bg-[#050"],
+html[data-theme="light"] [class*="bg-[#060"],
+html[data-theme="light"] [class*="bg-[#070"],
+html[data-theme="light"] [class*="bg-[#080"] {
+  background-color: var(--surface-solid) !important;
+}
+
+html[data-theme="light"] .certificate-viewer {
+  background-color: rgba(0, 0, 0, 0.95) !important;
+  color: #f5f5f5;
+}
+
+html[data-theme="neon"] [class*="bg-black/"],
+html[data-theme="neon"] [class~="bg-black"] {
+  background-color: var(--surface-solid) !important;
+}
+
+html[data-theme="light"] [class*="bg-emerald-"] {
+  background-color: var(--accent) !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="neon"] [class*="bg-emerald-"] {
+  background-color: var(--accent) !important;
+  color: #001508 !important;
+  box-shadow: 0 0 24px var(--accent-glow);
+}
+
+html[data-theme="light"] [class*="shadow-black"] {
+  --tw-shadow-color: var(--shadow) !important;
+}
+
+html[data-theme="neon"] [class*="shadow-black"] {
+  --tw-shadow-color: var(--shadow) !important;
+}
+
+html[data-theme="neon"] [class*="bg-white/"] {
+  box-shadow:
+    inset 0 0 0 1px rgba(0, 255, 115, 0.04),
+    0 0 22px rgba(0, 255, 115, 0.05);
+}
+
+html[data-theme="light"] [class~="bg-white"] {
+  background-color: #ffffff !important;
+}
+
+html[data-theme="neon"] [class~="bg-white"] {
+  background-color: var(--accent) !important;
+  color: #001508 !important;
+  box-shadow:
+    0 0 18px var(--accent-glow),
+    0 0 38px rgba(0, 255, 115, 0.12);
+}
+
+/* Personal photographs stay unmodified; neon treatment belongs on the frame. */
+.personal-image {
+  opacity: 1 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  visibility: visible !important;
+}
+
+html[data-theme="neon"] .personal-image {
+  position: relative;
+  z-index: 1;
+  filter: none !important;
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 115, 0.22),
+    0 0 28px rgba(0, 255, 115, 0.16);
+}
+
+html[data-theme="neon"] .profile-image-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.06) 42%,
+    transparent 72%
+  ) !important;
+  z-index: 2;
+}
+
+html[data-theme="neon"] .personal-image:hover {
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 115, 0.34),
+    0 0 34px rgba(0, 255, 115, 0.24);
+}
+
+html[data-theme="neon"] [class*="border-white/"],
+html[data-theme="neon"] [class*="border-emerald"] {
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 115, 0.04),
+    0 0 18px rgba(0, 255, 115, 0.08);
+}
+
+html[data-theme="light"] [class*="border-white/"] {
+  border-color: var(--border) !important;
+}
+
+html[data-theme="light"] [class*="bg-white/"] {
+  background-color: var(--surface) !important;
+}
+
+html[data-theme="light"] [class*="bg-emerald-"] {
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select {
+  color: var(--text-main);
+  background-color: var(--surface-solid);
+  border-color: var(--border-strong);
+}
+
+html[data-theme="neon"] input,
+html[data-theme="neon"] textarea,
+html[data-theme="neon"] select {
+  color: var(--text-main);
+  background-color: var(--surface-solid);
+  border-color: var(--accent-border);
+  box-shadow: inset 0 0 14px rgba(0, 255, 115, 0.04);
+}
+
+html[data-theme="neon"] button:focus-visible,
+html[data-theme="neon"] a:focus-visible,
+html[data-theme="neon"] input:focus-visible,
+html[data-theme="neon"] textarea:focus-visible,
+html[data-theme="neon"] select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 18px var(--accent-glow);
+}
+
+/* Component-level content tokens for pages that historically used
+   dark-only utility classes. */
+html[data-theme="light"] .theme-page,
+html[data-theme="light"] .resume-page {
+  color: var(--text-main);
+}
+
+html[data-theme="light"] .theme-page .text-white,
+html[data-theme="light"] .resume-page .text-white,
+html[data-theme="light"] .theme-page .\!text-white {
+  color: var(--text-main) !important;
+}
+
+html[data-theme="light"] .theme-page [class*="text-white/"],
+html[data-theme="light"] .resume-page [class*="text-white/"] {
+  color: var(--text-secondary) !important;
+}
+
+html[data-theme="light"] .theme-page [class*="border-white"],
+html[data-theme="light"] .resume-page [class*="border-white"] {
+  border-color: var(--border) !important;
+}
+
+html[data-theme="light"] .theme-page [class*="bg-[#"],
+html[data-theme="light"] .resume-page [class*="bg-[#"],
+html[data-theme="light"] .theme-page [class*="bg-black"],
+html[data-theme="light"] .resume-page [class*="bg-black"] {
+  background-color: var(--surface-solid) !important;
+}
+
+html[data-theme="light"] .theme-page [class*="bg-white/"],
+html[data-theme="light"] .resume-page [class*="bg-white/"] {
+  background-color: var(--surface) !important;
+}
+
+html[data-theme="light"] .theme-page input,
+html[data-theme="light"] .theme-page textarea,
+html[data-theme="light"] .resume-page input,
+html[data-theme="light"] .resume-page textarea {
+  color: var(--text-main);
+  background-color: var(--surface-solid);
+  border-color: var(--border-strong);
+}
+/* =========================================================
+   ACCESSIBILITY — REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

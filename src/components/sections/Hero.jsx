@@ -4,7 +4,10 @@ import {
   ArrowUpRight,
   Brain,
   Code2,
+  Download,
+  GitBranch,
   Layers3,
+  Mail,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -23,30 +26,28 @@ const focusCards = [
     icon: Code2,
     title: "Full Stack Development",
     description:
-      "Building responsive web applications with modern frontend and backend technologies.",
+      "Building responsive and practical web applications with modern frontend, backend, APIs, and database technologies.",
   },
   {
     number: "02",
     icon: Brain,
     title: "AI & Intelligent Systems",
     description:
-      "Exploring practical AI applications, intelligent tools, automation, and developer-focused systems.",
+      "Exploring AI-powered applications, automation, intelligent tools, and practical systems that solve real problems.",
   },
   {
     number: "03",
     icon: Layers3,
     title: "Projects & Experiments",
     description:
-      "Turning ideas into functional products while continuously learning and experimenting with technology.",
+      "Turning ideas into functional products while continuously learning, experimenting, and improving engineering skills.",
   },
 ];
-
-const profileImage = `${import.meta.env.BASE_URL}images/profile-shankar.jpeg`;
 
 const fadeUp = {
   hidden: {
     opacity: 0,
-    y: 30,
+    y: 24,
   },
   visible: {
     opacity: 1,
@@ -54,46 +55,63 @@ const fadeUp = {
   },
 };
 
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const profileImage = `${import.meta.env.BASE_URL}images/profile-shankar.jpeg`;
+
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-28 sm:pt-32">
-      {/* Background glow */}
-      <div className="pointer-events-none absolute left-1/2 top-40 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-emerald-400/[0.035] blur-[140px]" />
+    <section
+      id="home"
+      className="relative overflow-hidden pt-28 sm:pt-32"
+      aria-label="Introduction"
+    >
+      {/* Ambient hero glow */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-32 h-[500px] w-[700px] -translate-x-1/2 rounded-full bg-emerald-400/[0.035] blur-[140px]"
+      />
 
-      <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
-        {/* =========================
-            HERO MAIN
-        ========================== */}
+      <div className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10">
+        {/* =====================================================
+            HERO
+        ====================================================== */}
         <div className="grid min-h-[calc(100vh-120px)] items-center gap-14 pb-20 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-          {/* LEFT CONTENT */}
+          {/* ===================================================
+              LEFT CONTENT
+          ==================================================== */}
           <motion.div
             initial="hidden"
             animate="visible"
-            variants={{
-              visible: {
-                transition: {
-                  staggerChildren: 0.12,
-                },
-              },
-            }}
+            variants={staggerContainer}
             className="relative z-10"
           >
             {/* Availability */}
             <motion.div
               variants={fadeUp}
-              className="mb-8 inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-400/[0.04] px-4 py-2"
+              className="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/[0.045] px-4 py-2"
             >
-              <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+              <span
+                className="h-2 w-2 animate-pulse rounded-full bg-emerald-400"
+                aria-hidden="true"
+              />
 
-              <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.28em] text-emerald-400">
-                Available for opportunities
+              <span className="font-mono text-[9px] font-semibold uppercase tracking-[0.25em] text-emerald-400">
+                Open to opportunities
               </span>
             </motion.div>
 
-            {/* Small heading */}
+            {/* Intro */}
             <motion.p
               variants={fadeUp}
-              className="mb-4 font-mono text-[10px] font-semibold uppercase tracking-[0.32em] text-white/35"
+              className="mb-4 font-mono text-[10px] font-semibold uppercase tracking-[0.3em] text-white/35"
             >
               Hello, I'm
             </motion.p>
@@ -101,21 +119,27 @@ export default function Hero() {
             {/* Name */}
             <motion.h1
               variants={fadeUp}
-              className="text-[clamp(4.2rem,10vw,7.5rem)] font-black leading-[0.82] tracking-[-0.075em] text-white"
+              className="text-[clamp(3.8rem,10vw,7.5rem)] font-black leading-[0.82] tracking-[-0.075em] text-white"
             >
               SHANKAR
             </motion.h1>
 
-            {/* Role */}
+            {/* Professional positioning */}
             <motion.div
               variants={fadeUp}
-              className="mt-7 flex flex-wrap items-center gap-2 font-mono text-[10px] font-semibold uppercase tracking-[0.2em] text-white/35"
+              className="mt-7 flex flex-wrap items-center gap-x-2 gap-y-2 font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40"
             >
-              <span>Software Development</span>
+              <span className="text-white/70">
+                Computer Science Engineer
+              </span>
+
               <span className="text-emerald-400">•</span>
-              <span>Web</span>
+
+              <span>Full Stack Developer</span>
+
               <span className="text-emerald-400">•</span>
-              <span>AI / Technology</span>
+
+              <span>AI Enthusiast</span>
             </motion.div>
 
             {/* Description */}
@@ -123,37 +147,86 @@ export default function Hero() {
               variants={fadeUp}
               className="mt-8 max-w-2xl text-base leading-7 text-white/55 sm:text-lg sm:leading-8"
             >
-              I build practical digital experiences and enjoy exploring how
-              software, web technologies, and AI can turn ideas into useful
-              products.
+              I build practical digital products using modern web technologies,
+              backend systems, and AI. I enjoy turning ideas into useful,
+              scalable, and user-focused applications.
             </motion.p>
 
-            {/* Buttons */}
+            {/* =================================================
+                PRIMARY ACTIONS
+            ================================================== */}
             <motion.div
               variants={fadeUp}
               className="mt-9 flex flex-wrap gap-3"
             >
+              {/* Projects */}
               <Link
                 to="/projects"
-                className="group inline-flex items-center gap-3 rounded-xl bg-white px-6 py-4 text-sm font-semibold !text-black transition-all duration-300 hover:-translate-y-1 hover:bg-white/90"
+                className="group inline-flex items-center gap-3 rounded-xl bg-white px-6 py-4 text-sm font-semibold !text-black shadow-lg shadow-black/10 transition-all duration-300 hover:-translate-y-1 hover:bg-white/90"
               >
-                Explore My Work
+                View My Projects
 
                 <ArrowUpRight
                   size={17}
+                  aria-hidden="true"
                   className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
                 />
               </Link>
 
+              {/* Resume */}
               <Link
-                to="/about"
-                className="group inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.02] px-6 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]"
+                to="/resume"
+                className="group inline-flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.025] px-6 py-4 text-sm font-semibold text-white transition-all duration-300 hover:-translate-y-1 hover:border-emerald-400/30 hover:bg-emerald-400/[0.05]"
               >
-                More About Me
+                Download Resume
 
+                <Download
+                  size={16}
+                  aria-hidden="true"
+                  className="transition-transform duration-300 group-hover:translate-y-0.5"
+                />
+              </Link>
+            </motion.div>
+
+            {/* Secondary links */}
+            <motion.div
+              variants={fadeUp}
+              className="mt-5 flex flex-wrap items-center gap-5"
+            >
+              <a
+                href="https://github.com/shankar-uxcloud"
+                target="_blank"
+                rel="noreferrer"
+                className="group inline-flex items-center gap-2 text-xs font-medium text-white/40 transition-colors hover:text-white"
+                aria-label="Open Shankar's GitHub profile"
+              >
+                <GitBranch
+  size={15}
+  aria-hidden="true"
+  className="transition-transform group-hover:scale-110"
+/>
+                GitHub
                 <ArrowUpRight
-                  size={17}
-                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  size={12}
+                  aria-hidden="true"
+                  className="opacity-50"
+                />
+              </a>
+
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 text-xs font-medium text-white/40 transition-colors hover:text-emerald-400"
+              >
+                <Mail
+                  size={15}
+                  aria-hidden="true"
+                  className="transition-transform group-hover:scale-110"
+                />
+                Contact Me
+                <ArrowUpRight
+                  size={12}
+                  aria-hidden="true"
+                  className="opacity-50"
                 />
               </Link>
             </motion.div>
@@ -162,11 +235,12 @@ export default function Hero() {
             <motion.div
               variants={fadeUp}
               className="mt-10 flex flex-wrap gap-2"
+              aria-label="Technology stack"
             >
               {techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-full border border-white/[0.08] bg-white/[0.015] px-4 py-2 font-mono text-[9px] font-semibold tracking-[0.18em] text-white/35 transition-colors hover:border-emerald-400/30 hover:text-emerald-400"
+                  className="rounded-full border border-white/[0.08] bg-white/[0.015] px-4 py-2 font-mono text-[9px] font-semibold tracking-[0.16em] text-white/35 transition-all duration-300 hover:-translate-y-0.5 hover:border-emerald-400/30 hover:text-emerald-400"
                 >
                   {tech}
                 </span>
@@ -174,41 +248,49 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* =========================
+          {/* ===================================================
               RIGHT PROFILE CARD
-          ========================== */}
+          ==================================================== */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{
               duration: 0.8,
-              delay: 0.25,
+              delay: 0.2,
               ease: [0.22, 1, 0.36, 1],
             }}
-            className="relative mx-auto w-full max-w-[430px] lg:translate-y-10"
+            className="relative mx-auto w-full max-w-[430px] lg:translate-y-8"
           >
             {/* Outer frame */}
-            <div className="relative rounded-[28px] border border-white/[0.10] bg-white/[0.015] p-2 shadow-2xl">
+            <div className="relative rounded-[28px] border border-white/[0.10] bg-white/[0.015] p-2 shadow-2xl shadow-black/20">
               {/* Inner frame */}
               <div className="relative overflow-hidden rounded-[22px] border border-white/[0.08] bg-black">
-                {/* Profile image */}
                 <div className="relative aspect-[0.82] w-full overflow-hidden">
+                  {/* Profile image */}
                   <img
                     src={profileImage}
-                    alt="P Shankar - Full Stack Developer and AI Enthusiast"
-                    className="absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
+                    alt="P Shankar - Computer Science Engineer and Full Stack Developer"
+                    className="personal-image absolute inset-0 h-full w-full object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
+                    loading="eager"
+                    decoding="async"
                   />
 
-                  {/* Image overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
+                  {/* Gradient */}
+                  <div
+                    aria-hidden="true"
+                    className="profile-image-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"
+                  />
 
-                  {/* Subtle border glow */}
-                  <div className="pointer-events-none absolute inset-0 rounded-[22px] ring-1 ring-inset ring-white/[0.08]" />
+                  {/* Inner border */}
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-0 rounded-[22px] ring-1 ring-inset ring-white/[0.08]"
+                  />
 
-                  {/* Bottom profile information */}
+                  {/* Profile information */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-7">
                     <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-emerald-400">
-                      Developer
+                      Computer Science Engineer
                     </p>
 
                     <h2 className="mt-2 text-2xl font-bold tracking-tight text-white">
@@ -222,24 +304,27 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Current focus floating card */}
+              {/* Current focus */}
               <motion.div
                 animate={{
-                  y: [0, -7, 0],
+                  y: [0, -6, 0],
                 }}
                 transition={{
                   duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="absolute -right-4 bottom-24 rounded-2xl border border-white/[0.10] bg-black/90 px-4 py-3 shadow-xl backdrop-blur-xl"
+                className="absolute -right-3 bottom-24 rounded-2xl border border-white/[0.10] bg-black/90 px-4 py-3 shadow-xl backdrop-blur-xl sm:-right-4"
               >
                 <p className="font-mono text-[7px] font-bold uppercase tracking-[0.2em] text-white/30">
                   Current Focus
                 </p>
 
                 <div className="mt-1 flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+                  <span
+                    className="h-1.5 w-1.5 rounded-full bg-emerald-400"
+                    aria-hidden="true"
+                  />
 
                   <span className="text-[10px] font-semibold text-white/75">
                     Full Stack + AI
@@ -247,10 +332,13 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Available floating badge */}
-              <div className="absolute -bottom-4 right-8 rounded-full border border-emerald-400/30 bg-black/90 px-4 py-2 shadow-xl backdrop-blur-xl">
+              {/* Availability badge */}
+              <div className="absolute -bottom-4 right-6 rounded-full border border-emerald-400/30 bg-black/90 px-4 py-2 shadow-xl backdrop-blur-xl sm:right-8">
                 <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+                  <span
+                    className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400"
+                    aria-hidden="true"
+                  />
 
                   <span className="font-mono text-[8px] font-bold uppercase tracking-[0.2em] text-emerald-400">
                     Available
@@ -261,23 +349,17 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* =========================
+        {/* =====================================================
             WHAT I BUILD
-        ========================== */}
+        ====================================================== */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          variants={{
-            visible: {
-              transition: {
-                staggerChildren: 0.12,
-              },
-            },
-          }}
+          variants={staggerContainer}
           className="border-t border-white/[0.07] py-24"
         >
-          {/* Section heading */}
+          {/* Heading */}
           <motion.div variants={fadeUp} className="mb-12 max-w-2xl">
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.3em] text-emerald-400">
               What I Build
@@ -289,12 +371,13 @@ export default function Hero() {
             </h2>
 
             <p className="mt-4 max-w-xl text-sm leading-7 text-white/45">
-              My work sits at the intersection of full-stack development,
-              artificial intelligence, and continuous experimentation.
+              My work combines full-stack development, artificial
+              intelligence, and continuous experimentation to create useful
+              digital experiences.
             </p>
           </motion.div>
 
-          {/* Focus cards */}
+          {/* Cards */}
           <div className="grid gap-4 md:grid-cols-3">
             {focusCards.map((card) => {
               const Icon = card.icon;
@@ -307,14 +390,13 @@ export default function Hero() {
                   transition={{ duration: 0.25 }}
                   className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.015] p-7 transition-colors duration-300 hover:border-emerald-400/20"
                 >
-                  {/* Number */}
                   <div className="flex items-start justify-between">
                     <span className="font-mono text-[10px] tracking-[0.2em] text-white/20">
                       {card.number}
                     </span>
 
                     <div className="rounded-xl border border-white/[0.07] bg-white/[0.025] p-3 text-white/45 transition-colors group-hover:border-emerald-400/20 group-hover:text-emerald-400">
-                      <Icon size={19} />
+                      <Icon size={19} aria-hidden="true" />
                     </div>
                   </div>
 
@@ -331,14 +413,59 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* =========================
-            QUICK INFO STRIP
-        ========================== */}
+        {/* =====================================================
+            RECRUITER CTA
+        ====================================================== */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          className="mb-20 overflow-hidden rounded-2xl border border-emerald-400/15 bg-emerald-400/[0.025] p-7 sm:p-9"
+        >
+          <div className="flex flex-col justify-between gap-7 lg:flex-row lg:items-center">
+            <div className="max-w-2xl">
+              <p className="font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-emerald-400">
+                Let's Build Something
+              </p>
+
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                Have a project, opportunity, or idea?
+              </h2>
+
+              <p className="mt-3 text-sm leading-6 text-white/45">
+                Explore my work or get in touch to discuss technology,
+                development, internships, collaborations, or opportunities.
+              </p>
+            </div>
+
+            <div className="flex shrink-0 flex-wrap gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold !text-black transition-all hover:-translate-y-1 hover:bg-white/90"
+              >
+                Contact Me
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.025] px-5 py-3 text-sm font-semibold text-white transition-all hover:-translate-y-1 hover:border-white/20"
+              >
+                Explore Projects
+                <ArrowUpRight size={16} aria-hidden="true" />
+              </Link>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* =====================================================
+            QUICK PORTFOLIO INFO
+        ====================================================== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-20 flex flex-col justify-between gap-6 rounded-2xl border border-white/[0.07] bg-white/[0.015] p-6 sm:flex-row sm:items-center sm:p-7"
+          className="mb-12 flex flex-col justify-between gap-6 rounded-2xl border border-white/[0.07] bg-white/[0.015] p-6 sm:flex-row sm:items-center sm:p-7"
         >
           <div>
             <p className="font-mono text-[9px] font-bold uppercase tracking-[0.25em] text-white/25">
@@ -346,7 +473,7 @@ export default function Hero() {
             </p>
 
             <p className="mt-2 text-sm text-white/55">
-              Explore my projects, experience, certifications, and achievements.
+              Projects · Skills · Experience · Certifications · Achievements
             </p>
           </div>
 
@@ -358,6 +485,7 @@ export default function Hero() {
 
             <ArrowUpRight
               size={16}
+              aria-hidden="true"
               className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
             />
           </Link>
@@ -380,7 +508,7 @@ export default function Hero() {
               Scroll
             </span>
 
-            <ArrowDown size={15} />
+            <ArrowDown size={15} aria-hidden="true" />
           </motion.div>
         </div>
       </div>

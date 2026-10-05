@@ -67,7 +67,7 @@ const skills = [
 
 function Resume() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-4 pb-24 pt-32 sm:px-6 lg:px-8">
+    <section className="resume-page relative min-h-screen overflow-hidden px-4 pb-24 pt-32 sm:px-6 lg:px-8">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute left-[10%] top-[8%] h-72 w-72 rounded-full bg-emerald-400/[0.06] blur-[110px]" />
         <div className="absolute right-[8%] top-[25%] h-80 w-80 rounded-full bg-cyan-400/[0.04] blur-[120px]" />
@@ -338,7 +338,7 @@ function Resume() {
                 <div className="rounded-2xl border border-yellow-400/15 bg-yellow-400/[0.035] p-5">
                   <div className="flex items-start gap-3">
                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-yellow-300/20 bg-yellow-300/[0.08] text-lg">
-                      ??
+                      🏅
                     </div>
 
                     <div>
@@ -504,4 +504,3 @@ function SectionTitle({ number, title }) {
 }
 
 export default Resume;
-

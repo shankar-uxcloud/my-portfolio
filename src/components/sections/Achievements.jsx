@@ -108,7 +108,7 @@ function CertificateViewer({ open, onClose }) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.4 }}
-          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl sm:p-8"
+          className="certificate-viewer fixed inset-0 z-[200] flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl sm:p-8"
           role="dialog"
           aria-modal="true"
           aria-label="Gold Medal certificate viewer"
@@ -283,7 +283,7 @@ function Achievements() {
   return (
     <section
       id="achievements"
-      className="relative overflow-hidden px-5 py-24 sm:px-8 lg:px-12"
+      className="theme-page relative overflow-hidden px-5 py-24 sm:px-8 lg:px-12"
     >
       <div
         aria-hidden="true"

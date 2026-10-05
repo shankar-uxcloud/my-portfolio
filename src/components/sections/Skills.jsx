@@ -52,7 +52,7 @@ const skillGroups = [
 
 function Skills() {
   return (
-    <section className="relative min-h-screen overflow-hidden px-5 pb-24 pt-32 text-white sm:px-8 lg:px-12">
+    <section className="theme-page relative min-h-screen overflow-hidden px-5 pb-24 pt-32 text-white sm:px-8 lg:px-12">
       {/* Background */}
       <div
         aria-hidden="true"

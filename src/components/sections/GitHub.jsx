@@ -297,7 +297,7 @@ function RepositoryCard({ repository, index }) {
 
 function GitHub() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#020303] px-5 pb-28 pt-32 text-white sm:px-8 lg:px-12">
+    <section className="theme-page relative min-h-screen overflow-hidden px-5 pb-28 pt-32 text-white sm:px-8 lg:px-12">
       {/* ======================================================
           ATMOSPHERIC BACKGROUND
       ======================================================= */}

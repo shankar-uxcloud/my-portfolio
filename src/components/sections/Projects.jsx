@@ -303,7 +303,7 @@ function ProjectPreview({ project }) {
 
 function Projects() {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-[#020303] px-5 pb-28 pt-32 !text-white sm:px-8 lg:px-12">
+    <section className="theme-page relative min-h-screen overflow-hidden px-5 pb-28 pt-32 text-white sm:px-8 lg:px-12">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute left-1/2 top-20 h-[36rem] w-[36rem] -translate-x-1/2 rounded-full bg-emerald-500/[0.035] blur-[150px]"
