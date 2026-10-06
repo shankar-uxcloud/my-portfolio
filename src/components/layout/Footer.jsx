@@ -1,4 +1,11 @@
+import VisitorInsights from "../ui/VisitorInsights";
+
 function Footer() {
-  return <footer><h2>Footer</h2></footer>;
+  return (
+    <footer className="portfolio-footer">
+      <VisitorInsights />
+    </footer>
+  );
 }
+
 export default Footer;
